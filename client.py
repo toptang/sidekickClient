@@ -1,11 +1,10 @@
-import threading
+import json
 import logging
 import logging.config
-import websocket
-import json
-import os
 import sys
+import threading
 from queue import Queue
+import websocket
 
 
 class MuggleClientThread(threading.Thread):
