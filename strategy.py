@@ -32,9 +32,10 @@ class Strategy():
         pass
 
     # 登陆
-    def login(self, user, passwd):
+    def login(self, user, passwd, reqid=""):
         self.client.ws.send(json.dumps({
-            "op": "login",
+            "msg": "login",
+            "reqid": reqid,
             "data": {
                 "user": user,
                 "passwd": passwd,
@@ -42,12 +43,14 @@ class Strategy():
         }))
 
     # 订阅
-    def sub(self, market, topic):
+    def sub(self, market, symbol, table, reqid=""):
         self.client.ws.send(json.dumps({
-            "op": "sub",
+            "msg": "sub",
+            "reqid": reqid,
             "data": {
                 "market": market,
-                "topic": topic,
+                "symbol": symbol,
+                "table": table,
             }
         }))
 

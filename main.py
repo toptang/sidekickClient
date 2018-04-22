@@ -17,10 +17,13 @@ class MyStrategy(strategy.Strategy):
 
     def before_run(self):
         self.logger.info('start rocking')
+        self.login("sidekicktest", "letsrockingroll", "1")
         # TODO: 在这里，加入你开始策略之前的准备
 
     def handle_msg(self, msg):
         self.logger.info('%s' % msg)
+        if msg['msg'] == 'rsplogin' and msg['err'] is None:
+            self.sub("simulation", "btcusd", "orderbook", "2")
         # TODO: 在这里开始编写你的策略
 
 
